@@ -5,6 +5,7 @@ class CreateHistory < ActiveRecord::Migration
   def up
     create_table :states do |t|
       t.string :name
+      t.string :state_code
       t.string :capital
       t.integer :area
       t.integer :population
