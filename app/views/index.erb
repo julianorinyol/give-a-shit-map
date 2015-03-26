@@ -16,9 +16,16 @@
                 mouseenter: function(d, path) {
                     path.attr('fill', Math.random() < 0.5 ? '#c04' : '#04c');
                 },
+                click: function(d, path) {
+                    console.log(d)
+                    console.log(d["key"])
+                    console.log(d["label"])
+                    $("#superinfo").html("<p>Hello " + d["label"] + "</p>")
+                },
                 mouseleave: function(d, path) {
                     path.animate({ fill: '#f6f4f2' }, 200);
                 }
+            
             });
 
             var points_of_interest = [
@@ -45,3 +52,7 @@
 </script>
 
     <div id="map"></div>
+
+    <div class = "infocontainer">
+        <div id="superinfo"><p>hey</p></div>
+    </div>
