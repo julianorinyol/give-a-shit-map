@@ -11,10 +11,10 @@ require './lib/states_importer'
 #   touch 'db/db.sqlite3'
 # end
 
-# desc "drop the database"
-# task "db:drop" do
-#   rm_f 'db/db.sqlite3'
-# end
+desc "drop the database"
+task "db:drop" do
+  rm_f 'db/db.sqlite3'
+end
 
 # desc 'Retrieves the current schema version number'
 # task "db:version" do
