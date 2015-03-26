@@ -1,6 +1,4 @@
-require_relative '../../config'
-
-class CreateHistory < ActiveRecord::Migration
+class CreateStates < ActiveRecord::Migration
   
   def up
     create_table :states do |t|
