@@ -33,11 +33,18 @@ $(function() {
                     $("#container3").html("<p> The capital is " + state.capital + "</p>")
                 }
 
-                $.getJSON('/states/' + svgState.key)
-                .success(updateSuperinfo)
-                .error(function(status, error){
-                  console.log("something went wrong", status, error);
-                })
+                for(var i = 0; i < states.length; i++) {
+                    if(states[i].state_code === stateCode){
+                        updateSuperInfo(states[i])
+                    }
+                }
+                
+// the code below goes to the server for every request, too slow
+                // $.getJSON('/states/' + svgState.key)
+                // .success(updateSuperInfo)
+                // .error(function(status, error){
+                //   console.log("something went wrong", status, error);
+                // })
 
                 //var currentState = <% State.last.name %>
                 console.log(svgState)
