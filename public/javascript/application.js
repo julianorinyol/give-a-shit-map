@@ -12,11 +12,11 @@ $(function() {
         console.log("start of loadmap callback")
         map.addLayer('layer0', {
             styles: {
-                stroke: '#aaa',
-                fill: '#f6f4f2'
+                stroke: '#E4E4E4',
+                fill: '#ABABAB'
             },
             mouseenter: function(data, path) {
-                path.attr('fill', Math.random() < 0.5 ? '#c04' : '#04c');
+                path.attr('fill', Math.random() < 0.5 ? '#F79244' : '#EA8B42');
             },
             click: function(svgState, path) {
                 // console.log(d)
@@ -28,7 +28,11 @@ $(function() {
 
                 var updateSuperinfo = function(state){
                   $("#superinfo").html("<p> Hello from " + state.capital + "</p>")
+                   $("#container1").html("<p> The Population of "+ state.name + " is " + state["population"] + "</p>")
+                    $("#container2").html("<p> Did you know the area of  " + state.name + " is " + state["area"] + " square miles?? " + "</p>")
+                    $("#container3").html("<p> The capital is " + state.capital + "</p>")
                 }
+                
                 $.getJSON('/states/' + svgState.key)
                 .success(updateSuperinfo)
                 .error(function(status, error){
@@ -40,7 +44,7 @@ $(function() {
                 // $("#testytest").append("<p>"<% State.find(1).name %>"</p>")
             },
             mouseleave: function(d, path) {
-                path.animate({ fill: '#f6f4f2' }, 200);
+                path.animate({ fill: '#ABABAB' }, 200);
             }
         
         });

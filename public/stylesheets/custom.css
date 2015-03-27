@@ -22,3 +22,8 @@ p {
   color: white;
   text-align: center;
 }
+
+
+.navbar-default .navbar-brand {
+  font-family: 'Fjalla One', sans-serif;
+}
