@@ -27,8 +27,12 @@ $(function() {
                 var stateCode = svgState.key
 
                 var updateSuperinfo = function(state){
-                  $("#superinfo").html("<p> Hello from " + state.capital + "</p>")
+                  $("#superinfo").html("<p> Hello from " + state["name"] + "</p>")
+                $("#container1").html("<p> The Population of "+ state.name + " is " + state["population"] + "</p>")
+                $("#container2").html("<p> Did you know the area of  " + state.name + " is " + state["area"] + " square miles?? " + "</p>")
+                $("#container3").html("<p> The capital is " + state.capital + "</p>")
                 }
+
                 $.getJSON('/states/' + svgState.key)
                 .success(updateSuperinfo)
                 .error(function(status, error){
@@ -46,9 +50,9 @@ $(function() {
         });
 
         var points_of_interest = [
-            { name: 'Juneau, AK', lat: 58.3, lon: -134.416667 },
-            { name: 'Honolulu, HI', lat: 21.3, lon: -157.816667 },
-            { name: 'San Francisco, CA', lat: 37.783333, lon: -122.416667 },
+            // { name: 'Juneau, AK', lat: 58.3, lon: -134.416667 },
+            // { name: 'Honolulu, HI', lat: 21.3, lon: -157.816667 },
+            // { name: 'San Francisco, CA', lat: 37.783333, lon: -122.416667 },
         ];
 
         map.addSymbols({
