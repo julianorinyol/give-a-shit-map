@@ -1,9 +1,36 @@
-<h1>DivvyMap</h1>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="brand navbar-brand">DIVVY MAP</a>
+    </div>
 
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+<!--         <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Link</a></li> -->
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
 
     <div id="map"></div>
 
     <div class = "infocontainer">
-        <div id="superinfo"><p>hey</p></div>
+        <div id="superinfo"><h1>Go on, click on a state</h1></div>
+    <div class="container-fluid">
+    <div class="row">
+          <div class="col-xs-3"><h2>Population</h2><p>This is some: seed data</p></div>
+          <div class="col-xs-3"><h2>LandMass Size</h2></div>
+          <div class="col-xs-3"><h2>Education Rate</h2></div>
+     </div>
+     </div>
     </div>
-    <p id="testytest"><%= State.find(1).name %> </p>
+
+</div>
