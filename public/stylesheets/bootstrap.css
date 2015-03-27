@@ -1078,7 +1078,7 @@ body {
   font-size: 14px;
   line-height: 1.42857143;
   color: #333;
-  background-color: #434343;
+  background-color: #E4E4E4;
 }
 input,
 button,
@@ -4067,7 +4067,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   min-height: 50px;
   margin-bottom: 20px;
   border: 1px solid transparent;
-  height: 70px;
+  height: 100px;
 }
 @media (min-width: 768px) {
   .navbar {
@@ -4396,8 +4396,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-default {
-  background-color: #303030;
-  border-color: #959595;
+  background-color: #56BD91;
+  border-color: #4EA680;
 }
 .navbar-default .navbar-brand {
   color: #67D8B6;
