@@ -1214,6 +1214,10 @@ h3,
 .h3 {
   margin-top: 20px;
   margin-bottom: 10px;
+  text-align: center;
+  font-family: bebas neue;
+  color: #F5F5F5;
+
 }
 h1 small,
 .h1 small,
@@ -1278,6 +1282,7 @@ h6,
 }
 p {
   margin: 0 0 10px;
+
 }
 .lead {
   margin-bottom: 20px;
@@ -1597,6 +1602,7 @@ pre code {
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
+
 }
 .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
   float: left;
@@ -1627,9 +1633,17 @@ pre code {
 }
 .col-xs-4 {
   width: 33.33333333%;
+  background-color: transparent;
+  border: #959595 solid 1px;
+  border-radius: 7px;
 }
 .col-xs-3 {
   width: 25%;
+  margin-left: 100px;
+  border: #959595 solid 1px;
+  border-radius: 8px;
+  background-color: #303030;
+  margin-bottom: 50px;
 }
 .col-xs-2 {
   width: 16.66666667%;
@@ -4162,10 +4176,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-brand {
   float: left;
   height: 50px;
-  padding: 15px 15px;
+  padding: 15px 25px;
   font-size: 18px;
   line-height: 20px;
-  padding-top: 27px;
+  padding-top: 29px;
 }
 .navbar-brand:hover,
 .navbar-brand:focus {
@@ -4392,7 +4406,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
-  color: #5e5e5e;
+/*  color: white;*/
   background-color: transparent;
 }
 .navbar-default .navbar-text {
