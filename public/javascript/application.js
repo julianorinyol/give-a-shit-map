@@ -27,7 +27,7 @@ $(function() {
                 var stateCode = svgState.key
 
                 var updateSuperinfo = function(state){
-                    $("#superinfo").html("<p> Hello from " + state["name"] + "</p>")
+                    $("#superinfo").html("<h1> Hello from " + state["name"] + "</h1>")
                     $("#container1").html("<p> The Population of "+ state.name + " is " + state["population"] + "</p>")
                     $("#container2").html("<p> Did you know the area of  " + state.name + " is " + state["area"] + " square miles?? " + "</p>")
                     $("#container3").html("<p> The capital is " + state.capital + "</p>")

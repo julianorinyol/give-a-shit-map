@@ -1216,7 +1216,7 @@ h3,
   margin-bottom: 10px;
   text-align: center;
   font-family: fjalla one;
-  color: #F5F5F5;
+  color: white;
   padding-bottom: 10px;
 
 }
@@ -4192,7 +4192,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 @media (min-width: 768px) {
   .navbar > .container .navbar-brand,
   .navbar > .container-fluid .navbar-brand {
-    margin-left: 645px;
+    margin-left: 690px;
     margin-top: 5px;
   }
 }
