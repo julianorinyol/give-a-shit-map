@@ -12,11 +12,11 @@ $(function() {
         console.log("start of loadmap callback")
         map.addLayer('layer0', {
             styles: {
-                stroke: '#E4E4E4',
-                fill: '#ABABAB'
+                stroke: '#aaa',
+                fill: '#f6f4f2'
             },
             mouseenter: function(data, path) {
-                path.attr('fill', Math.random() < 0.5 ? '#F79244' : '#EA8B42');
+                path.attr('fill', Math.random() < 0.5 ? '#c04' : '#04c');
             },
             click: function(svgState, path) {
                 // console.log(d)
@@ -26,20 +26,21 @@ $(function() {
 
                 var stateCode = svgState.key
 
-                var updateSuperinfo = function(state){
-                    $("#superinfo").html("<p> Hello from " + state["name"] + "</p>")
-                    $("#container1").html("<p> The Population of "+ state.name + " is " + state["population"] + "</p>")
-                    $("#container2").html("<p> Did you know the area of  " + state.name + " is " + state["area"] + " square miles?? " + "</p>")
-                    $("#container3").html("<p> The capital is " + state.capital + "</p>")
+                var updateSuperInfo = function(state, x, y){
+                
+                  $("#superinfo").html("<p> Hello from " + state["name"] + "</p>")
+                $("#container1").html("<p> The Population of "+ state.name + " is " + state["population"] + "</p>")
+                $("#container2").html("<p> Did you know the area of  " + state.name + " is " + state["area"] + " square miles?? " + "</p>")
+                $("#container3").html("<p> The capital is " + state.capital + "</p>")
                 }
 
                 for(var i = 0; i < states.length; i++) {
                     if(states[i].state_code === stateCode){
                         updateSuperInfo(states[i])
                     }
+
                 }
-                
-// the code below goes to the server for every request, too slow
+
                 // $.getJSON('/states/' + svgState.key)
                 // .success(updateSuperInfo)
                 // .error(function(status, error){
@@ -51,7 +52,7 @@ $(function() {
                 // $("#testytest").append("<p>"<% State.find(1).name %>"</p>")
             },
             mouseleave: function(d, path) {
-                path.animate({ fill: '#ABABAB' }, 200);
+                path.animate({ fill: '#f6f4f2' }, 200);
             }
         
         });
