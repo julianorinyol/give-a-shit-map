@@ -19,19 +19,14 @@ $(function() {
                 path.attr('fill', Math.random() < 0.5 ? '#c04' : '#04c');
             },
             click: function(svgState, path) {
-                // console.log(d)
-                // console.log(d["key"])
-                // console.log(d["label"])
-                // $("#superinfo").html("<p>Hello " + svgState.label + "</p>")
-
+                
                 var stateCode = svgState.key
 
                 var updateSuperInfo = function(state, x, y){
-                
-                  $("#superinfo").html("<p> Hello from " + state["name"] + "</p>")
-                $("#container1").html("<p> The Population of "+ state.name + " is " + state["population"] + "</p>")
-                $("#container2").html("<p> Did you know the area of  " + state.name + " is " + state["area"] + " square miles?? " + "</p>")
-                $("#container3").html("<p> The capital is " + state.capital + "</p>")
+                    $("#superinfo").html("<p> Hello from " + state["name"] + "</p>")
+                    $("#container1").html("<p> The Population of "+ state.name + " is " + state["population"] + "</p>")
+                    $("#container2").html("<p> Did you know the area of  " + state.name + " is " + state["area"] + " square miles?? " + "</p>")
+                    $("#container3").html("<p> The capital is " + state.capital + "</p>")
                 }
 
                 for(var i = 0; i < states.length; i++) {

@@ -3,8 +3,6 @@ helpers do
   @states = State.all
 end
 
-
-
 get '/' do
   erb :index
 end
