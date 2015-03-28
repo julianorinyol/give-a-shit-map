@@ -10,19 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150326124000) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20150327175134) do
 
   create_table "states", force: true do |t|
-    t.string   "name"
-    t.string   "state_code"
-    t.string   "capital"
-    t.integer  "area"
-    t.integer  "population"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string "name"
+    t.string "health_insurance"
+    t.string "teen_birth"
+    t.string "doctor"
+    t.string "poor_health"
+    t.string "obesity"
+    t.string "state_code"
   end
 
 end
