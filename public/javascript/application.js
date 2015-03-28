@@ -12,19 +12,19 @@ $(function() {
         console.log("start of loadmap callback")
         map.addLayer('layer0', {
             styles: {
-                stroke: '#aaa',
-                fill: '#f6f4f2'
+                stroke: '#E4E4E4',
+                fill: '#ABABAB'
             },
             mouseenter: function(data, path) {
-                path.attr('fill', Math.random() < 0.5 ? '#c04' : '#04c');
+                path.attr('fill', Math.random() < 0.5 ? '#F79244' : '#EA8B42');
             },
             click: function(svgState, path) {
         
-                // for(var i = 0; i < states.length; i++) {
-                //     if(states[i].state_code === stateCode){
-                //         updateSuperInfo(states[i])
-                //     }
-                // }
+                for(var i = 0; i < states.length; i++) {
+                    if(states[i].state_code === stateCode){
+                        updateSuperInfo(states[i])
+                    }
+                }
 
                 var offset = 20;
                 $('html, body').animate({
@@ -35,7 +35,8 @@ $(function() {
                 var stateCode = svgState.key
 
                 var updateSuperInfo = function(state, x, y){
-                    $("#superinfo").html("<p> Hello from " + state["name"] + "</p>")
+                    console.log(state);
+                    $("#superinfo").html("<h1> Hello from " + state["name"] + "</h1>")
                     $("#container1").html("<p> In a randomized telephone survey of women 18 years and older " + state.poor_health + "% reported having \"fair or poor\" health. </p>" + "<p>" + "An adult who has a BMI between 25 and 29.9 is considered overweight. An adult who has a BMI of 30 or higher is considered obese. " + state.obesity  + "% of women in " + state.name +" are overweight or obese" + "</p>")
                     $("#container2").html("<p>Out of every 1000 teenage girls between 15 and 19 years, " + state.teen_birth + " have had at least one child.</p>") 
                     $("#container3").html("<p>" + state.doctor + "% of women in " + state.name + " have no personal doctor or other health care provider." + "</p>" + "<p>" + state.health_insurance + "% of women aged 19-63 did not have health insurance coverage.</p>")
@@ -44,13 +45,10 @@ $(function() {
                 $.getJSON('/states/' + svgState.key)
                 .success(function(state) {
                     $( ".infocontainer" ).fadeOut( "fast", function() {
-                        updateSuperinfo(state);
+                        updateSuperInfo(state);
                         $( ".infocontainer" ).fadeIn();
                     });
-                    
-
-     
-
+               
                     console.log(state);
                     // fade in info boxes
 
@@ -65,7 +63,7 @@ $(function() {
                 // $("#testytest").append("<p>"<% State.find(1).name %>"</p>")
             },
             mouseleave: function(d, path) {
-                path.animate({ fill: '#f6f4f2' }, 200);
+                path.animate({ fill: '#ABABAB' }, 200);
             }
         
         });
