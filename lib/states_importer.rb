@@ -1,11 +1,13 @@
 class StatesImporter
 
-  def initialize(filename=File.dirname(__FILE__) + "/../db/data/states.csv")
+  # def initialize(filename=File.dirname(__FILE__) + "/../db/data/states.csv")
+  def initialize(filename=File.dirname(__FILE__) + "/../db/data/USA_Womens_Health_by_state_Sheet1.csv")
+
     @filename = filename
   end
 
   def import
-    field_names = ['name', 'state_code', 'capital', 'area', 'population']
+    # field_names = ['name', 'state_code', 'capital', 'area', 'population']
 
     print "Importing states from #{@filename}: "
     failure_count = 0
