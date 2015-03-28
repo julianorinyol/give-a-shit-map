@@ -25,7 +25,7 @@ $(function() {
                 var updateSuperInfo = function(state, x, y){
                     $("#superinfo").html("<p> Hello from " + state["name"] + "</p>")
                     
-                    $("#container1").html("<p> In a randomized telephone survey of women 18 years and older " + state.poor_health + "% reported having \"fair or poor\" health. </p>" + "<p>" + "An adult who has a BMI between 25 and 29.9 is considered overweight. An adult who has a BMI of 30 or higher is considered obese. Astonisingly, " + state.obesity  + "% of women in " + state.name +" are overweight or obese" + "</p>")
+                    $("#container1").html("<p> In a randomized telephone survey of women 18 years and older " + state.poor_health + "% reported having \"fair or poor\" health. </p>" + "<p>" + "An adult who has a BMI between 25 and 29.9 is considered overweight. An adult who has a BMI of 30 or higher is considered obese. " + state.obesity  + "% of women in " + state.name +" are overweight or obese" + "</p>")
 
                     $("#container2").html("<p>Out of every 1000 teenage girls between 15 and 19 years, " + state.teen_birth + " have had at least one child.</p>")
                     
