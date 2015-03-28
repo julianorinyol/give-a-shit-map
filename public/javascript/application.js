@@ -19,6 +19,12 @@ $(function() {
                 path.attr('fill', Math.random() < 0.5 ? '#F79244' : '#EA8B42');
             },
             click: function(svgState, path) {
+                var offset = 20;
+                $('html, body').animate({
+                  scrollTop: $(".scroll-to").offset().top + offset
+                }, 2000);
+
+
                 // console.log(d)
                 // console.log(d["key"])
                 // console.log(d["label"])
@@ -27,6 +33,7 @@ $(function() {
                 var stateCode = svgState.key
 
                 var updateSuperinfo = function(state){
+                    console.log(state);
                     $("#superinfo").html("<h1> Hello from " + state["name"] + "</h1>")
                     $("#container1").html("<p> The Population of "+ state.name + " is " + state["population"] + "</p>")
                     $("#container2").html("<p> Did you know the area of  " + state.name + " is " + state["area"] + " square miles?? " + "</p>")
@@ -34,7 +41,20 @@ $(function() {
                 }
 
                 $.getJSON('/states/' + svgState.key)
-                .success(updateSuperinfo)
+                .success(function(state) {
+                    $( ".infocontainer" ).fadeOut( "fast", function() {
+                        updateSuperinfo(state);
+                        $( ".infocontainer" ).fadeIn();
+                    });
+                    
+
+     
+
+                    console.log(state);
+                    // fade in info boxes
+
+                    
+                })
                 .error(function(status, error){
                   console.log("something went wrong", status, error);
                 })
