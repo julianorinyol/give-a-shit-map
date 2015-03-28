@@ -27,3 +27,12 @@ p {
 .navbar-default .navbar-brand {
   font-family: 'Fjalla One', sans-serif;
 }
+
+.infocontainer {
+  display: none;
+}
+
+
+.scroll-to {
+  height: 400px;
+}

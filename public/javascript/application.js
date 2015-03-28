@@ -19,31 +19,46 @@ $(function() {
                 path.attr('fill', Math.random() < 0.5 ? '#c04' : '#04c');
             },
             click: function(svgState, path) {
-                
+        
+                // for(var i = 0; i < states.length; i++) {
+                //     if(states[i].state_code === stateCode){
+                //         updateSuperInfo(states[i])
+                //     }
+                // }
+
+                var offset = 20;
+                $('html, body').animate({
+                  scrollTop: $(".scroll-to").offset().top + offset
+                }, 2000);
+
+
                 var stateCode = svgState.key
 
                 var updateSuperInfo = function(state, x, y){
                     $("#superinfo").html("<p> Hello from " + state["name"] + "</p>")
-                    
                     $("#container1").html("<p> In a randomized telephone survey of women 18 years and older " + state.poor_health + "% reported having \"fair or poor\" health. </p>" + "<p>" + "An adult who has a BMI between 25 and 29.9 is considered overweight. An adult who has a BMI of 30 or higher is considered obese. " + state.obesity  + "% of women in " + state.name +" are overweight or obese" + "</p>")
-
-                    $("#container2").html("<p>Out of every 1000 teenage girls between 15 and 19 years, " + state.teen_birth + " have had at least one child.</p>")
-                    
+                    $("#container2").html("<p>Out of every 1000 teenage girls between 15 and 19 years, " + state.teen_birth + " have had at least one child.</p>") 
                     $("#container3").html("<p>" + state.doctor + "% of women in " + state.name + " have no personal doctor or other health care provider." + "</p>" + "<p>" + state.health_insurance + "% of women aged 19-63 did not have health insurance coverage.</p>")
                 }
 
-                for(var i = 0; i < states.length; i++) {
-                    if(states[i].state_code === stateCode){
-                        updateSuperInfo(states[i])
-                    }
+                $.getJSON('/states/' + svgState.key)
+                .success(function(state) {
+                    $( ".infocontainer" ).fadeOut( "fast", function() {
+                        updateSuperinfo(state);
+                        $( ".infocontainer" ).fadeIn();
+                    });
+                    
 
-                }
+     
 
-                // $.getJSON('/states/' + svgState.key)
-                // .success(updateSuperInfo)
-                // .error(function(status, error){
-                //   console.log("something went wrong", status, error);
-                // })
+                    console.log(state);
+                    // fade in info boxes
+
+                    
+                })
+                .error(function(status, error){
+                  console.log("something went wrong", status, error);
+                })
 
                 //var currentState = <% State.last.name %>
                 console.log(svgState)
