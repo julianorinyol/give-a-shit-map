@@ -29,6 +29,7 @@ GEM
     method_source (0.8.2)
     minitest (4.7.5)
     multi_json (1.9.2)
+    pg (0.18.1)
     pry (0.9.12.6)
       coderay (~> 1.0)
       method_source (~> 0.8)
@@ -83,6 +84,7 @@ PLATFORMS
 DEPENDENCIES
   activesupport
   jbuilder
+  pg
   pry
   puma
   rake
