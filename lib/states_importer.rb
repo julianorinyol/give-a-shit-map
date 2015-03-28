@@ -8,6 +8,7 @@ class StatesImporter
 
   def import
     # field_names = ['name', 'state_code', 'capital', 'area', 'population']
+    field_names = ['name', '', 'capital', 'area', 'population']
 
     print "Importing states from #{@filename}: "
     failure_count = 0
