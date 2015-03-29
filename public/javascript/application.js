@@ -31,7 +31,7 @@ $(function() {
                 var offset = 20;
                 $('html, body').animate({
                   scrollTop: $(".scroll-to").offset().top + offset
-                }, 2000);
+                }, 1500);
 
 
                 var stateCode = svgState.key
