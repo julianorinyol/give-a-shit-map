@@ -64,6 +64,8 @@ $(function() {
                     var contents2 = ""
                     var contents3 = ""
                     
+                    mode = "equality"
+
                     if(mode === "education") {
                         contents1 = educationContainer1;
                         contents2 = educationContainer2;
