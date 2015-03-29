@@ -33,7 +33,7 @@ $(function() {
 
     console.log("outside function", mode)
     
-    var educationTitles = ["Res11ources", "Performance","Graduation Rates"]
+    var educationTitles = ["Resources", "Performance","Graduation Rates"]
 
     var equalityTitles = ["Equality1", "Equality2","Equality3"]
 
@@ -66,20 +66,20 @@ $(function() {
      var updateSuperInfo = function(state, x, y){
                     console.log(state);
 
-                    var educationContainer1 = '<p> People per library: ' + state.population/(state.branch_libraries + state.central_libraries) + '</p>' + '<p>Students per teacher: ' + state.students_per_teacher + '</p>'
+                    var educationContainer1 = '<p> People per library: ' + parseInt(state.population/(state.branch_libraries + state.central_libraries)) + '</p>' + '<p>Students per teacher: ' + state.students_per_teacher + '</p>'
 
-                    var educationContainer2 = "<p>"+"Math: " + state.grade_eight_math_score + "</p>" + "<p>"+"Writing: "+ state.grade_eight_writing_score + "</p>" + "<p>*Date from stardized tests of grade 8 students</p>"
+                    var educationContainer2 = "<p>"+"Math: " + state.grade_eight_math_score + "</p>" + "<p>"+"Writing: "+ state.grade_eight_writing_score + "</p>" + "<p>* <em>Date from standardized tests of eighth grade students</em></p>"
                     
-                    var educationContainer3 =  "<p>"+ "Graduated high school: " + state.high_school_grad * 100 + "%</p>" + "<p>Bachelors Degree: " + (state.bachelors  * 100) + "%</p>" + "<p>"+ " Advanced degree: "+ state.advanced_degree * 100 + "%</p>" + "<p>*Percentage of adult population over 25 years old</p>"
+                    var educationContainer3 =  "<p>"+ "High school diploma: " + state.high_school_grad * 100 + "%</p>" + "<p>Bachelors degree: " + (state.bachelors  * 100) + "%</p>" + "<p>"+ " Advanced degree: "+ state.advanced_degree * 100 + "%</p>" + "<p>* <em>Percentage of adult population over 25 years old</em></p>"
 
                     $("#superinfo").html("<h1>" + state["name"] + ", Population: "+ state.population +"</h1>")                    
 
-                    var equalityContainer1 = "<p>Women in politics: " + "5" + "%</p>"
+                    var equalityContainer1 = "<p>Women in legislature: " + parseInt(state.total_seats/(state.house+state.senate)) + "%</p>"
                     var equalityContainer2 = "<p>Women in the justice system: "+"5"+"%</p>"
-                    var equalityContainer3 = "<p>" + "For every dollar earned by men on average, women earn " + state.wage_gap + " cents.</p>"
-                    var povertyContainer1 = "<p>general poverty rate " + state.general_poverty_rate + "%</p>"
-                    var povertyContainer2 = "<p>Women_in_poverty " + state.women_in_poverty + "%</p>"
-                    var povertyContainer3 = "<p>emptyempty, what will i put here? " + "5" + "%</p>"
+                    var equalityContainer3 = "<p>" + "For every dollar earned by men on average, women earn " + parseInt(state.wage_gap) + " cents.</p>"
+                    var povertyContainer1 = "<p>Overall poverty rate: " + state.general_poverty_rate*100 + "%</p>"
+                    var povertyContainer2 = "<p>Women in poverty: " + state.women_in_poverty + "%</p>"
+                    var povertyContainer3 = "<p>Children in poverty: " + "5" + "%</p>"
 
                     var contents1 = ""
                     var contents2 = ""
@@ -115,7 +115,7 @@ $(function() {
             mouseenter: function(state, path) {
                 console.log(state.label);
                 path.attr('fill', Math.random() < 0.5 ? '#F79244' : '#EA8B42');
-                $("#statename").html("<h3>" + state.label +  "</h3>") 
+                $("#statename").html("<h3 style='color:#F79244'>" + state.label +  "</h3>"); 
             },
             click: function(svgState, path) {
         // the following for loop can be used, when we set up havin g the database all load at once in the beginning. we need to figure out how to use the animations with it.
