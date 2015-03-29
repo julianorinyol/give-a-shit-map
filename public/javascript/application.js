@@ -14,20 +14,20 @@ $(function() {
         mode = "equality"
         console.log("inside function, ", mode)
         updateTitles()
-        console.log("line 16")
-        updateSuperInfo()
+        console.log("line 18, the currentState var ==", currentState)
+        talkToServer(currentState)        
     });
     $("#educationMode").click(function(){ 
         mode = "education"
         console.log("inside function, ", mode)
         updateTitles()
-        updateSuperInfo()
+        talkToServer(currentState)        
     });
     $("#povertyMode").click(function(){ 
         mode = "poverty"
         console.log("inside function, ", mode)
         updateTitles()
-        updateSuperInfo()
+        talkToServer(currentState)        
     });
 
 
@@ -36,7 +36,7 @@ $(function() {
     
     var educationTitles = ["Resources", "Performance","Graduation Rates"]
 
-    var equalityTitles = ["Equality1", "Equality2","Equality3"]
+    var equalityTitles = ["Politics", "Justice System","Wage Gap"]
 
     var povertyTitles = ["Poverty1", "Poverty2","Poverty3"]
 
@@ -115,7 +115,6 @@ $(function() {
                 fill: '#ABABAB'
             },
             mouseenter: function(state, path) {
-                console.log(state.label);
                 path.attr('fill', Math.random() < 0.5 ? '#F79244' : '#EA8B42');
                 $("#statename").html("<h3>" + state.label +  "</h3>") 
             },
@@ -127,7 +126,7 @@ $(function() {
                 //     }
                 // }
 
-                currentState = "" 
+                currentState = svgState.label
                 
                 function talkToServer(svgState, path) {
                     var offset = 20;
