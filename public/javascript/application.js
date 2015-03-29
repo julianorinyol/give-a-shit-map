@@ -7,7 +7,31 @@ $(function() {
     })
     console.log('state 2', states);
 
-    var mode = "education"
+    var mode = "equality"
+    
+    var educationTitles = ["Res11ources", "Performance","Graduation Rates"]
+
+    var equalityTitles = ["Equality1", "Equality2","Equality3"]
+
+    var povertyTitles = ["Poverty1", "Poverty2","Poverty3"]
+
+
+    if (mode == "education"){
+        console.log("mode is education")
+        $("#box1title").html(educationTitles[0])
+        $("#box2title").html(educationTitles[1])
+        $("#box3title").html(educationTitles[2])
+    }else if(mode == "poverty"){
+        console.log("mode is poverty")
+        $("#box1title").html(povertyTitles[0])
+        $("#box2title").html(povertyTitles[1])
+        $("#box3title").html(povertyTitles[2])
+    }else if(mode == "equality"){
+        console.log("mode is equality")
+        $("#box1title").html(equalityTitles[0])
+        $("#box2title").html(equalityTitles[1])
+        $("#box3title").html(equalityTitles[2])
+    }
 
     var map = kartograph.map('#map');
     map.loadMap('usa.svg', function() {
@@ -64,8 +88,6 @@ $(function() {
                     var contents2 = ""
                     var contents3 = ""
                     
-                    mode = "equality"
-
                     if(mode === "education") {
                         contents1 = educationContainer1;
                         contents2 = educationContainer2;
