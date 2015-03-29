@@ -8,7 +8,8 @@ $(function() {
     console.log('state 2', states);
 
     var mode = "education"
-    
+    var currentState = ""
+
     $("#equalityMode").click(function(){ 
         mode = "equality"
         console.log("inside function, ", mode)
@@ -62,45 +63,45 @@ $(function() {
     updateTitles()
 
      var updateSuperInfo = function(state, x, y){
-                    console.log(state);
+        console.log(state);
 
-                    var educationContainer1 = '<p> Libraries per capita: ' + state.central_libraries + '</p>' + '<p>Students per teacher: ' + state.students_per_teacher + '</p>'
+        var educationContainer1 = '<p> Libraries per capita: ' + state.central_libraries + '</p>' + '<p>Students per teacher: ' + state.students_per_teacher + '</p>'
 
-                    var educationContainer2 = "<p>"+"Math: " + state.grade_eight_math_score + "</p>" + "<p>"+"Writing: "+ state.grade_eight_writing_score + "</p>" + "<p>*Date from stardized tests of grade 8 students</p>"
-                    
-                    var educationContainer3 =  "<p>"+ "Graduated high school: " + state.high_school_grad * 100 + "%</p>" + "<p>Bachelors Degree: " + (state.bachelors  * 100) + "%</p>" + "<p>"+ " Advanced degree: "+ state.advanced_degree * 100 + "%</p>" + "<p>*Percentage of adult population over 25 years old</p>"
+        var educationContainer2 = "<p>"+"Math: " + state.grade_eight_math_score + "</p>" + "<p>"+"Writing: "+ state.grade_eight_writing_score + "</p>" + "<p>*Date from stardized tests of grade 8 students</p>"
+        
+        var educationContainer3 =  "<p>"+ "Graduated high school: " + state.high_school_grad * 100 + "%</p>" + "<p>Bachelors Degree: " + (state.bachelors  * 100) + "%</p>" + "<p>"+ " Advanced degree: "+ state.advanced_degree * 100 + "%</p>" + "<p>*Percentage of adult population over 25 years old</p>"
 
-                    $("#superinfo").html("<h1>" + state["name"] + ", Population: "+ state.population +"</h1>")                    
+        $("#superinfo").html("<h1>" + state["name"] + ", Population: "+ state.population +"</h1>")                    
 
-                    var equalityContainer1 = "<p>Women in politics: " + "5" + "%</p>"
-                    var equalityContainer2 = "<p>Women in the justice system: "+"5"+"%</p>"
-                    var equalityContainer3 = "<p>" + "For every dollar earned by men on average, women earn " + state.wage_gap + " cents.</p>"
-                    var povertyContainer1 = "<p>general poverty rate " + state.general_poverty_rate + "%</p>"
-                    var povertyContainer2 = "<p>Women_in_poverty " + state.women_in_poverty + "%</p>"
-                    var povertyContainer3 = "<p>emptyempty, what will i put here? " + "5" + "%</p>"
+        var equalityContainer1 = "<p>Women in politics: " + "5" + "%</p>"
+        var equalityContainer2 = "<p>Women in the justice system: "+"5"+"%</p>"
+        var equalityContainer3 = "<p>" + "For every dollar earned by men on average, women earn " + state.wage_gap + " cents.</p>"
+        var povertyContainer1 = "<p>general poverty rate " + state.general_poverty_rate + "%</p>"
+        var povertyContainer2 = "<p>Women_in_poverty " + state.women_in_poverty + "%</p>"
+        var povertyContainer3 = "<p>emptyempty, what will i put here? " + "5" + "%</p>"
 
-                    var contents1 = ""
-                    var contents2 = ""
-                    var contents3 = ""
-                    
-                    if(mode === "education") {
-                        contents1 = educationContainer1;
-                        contents2 = educationContainer2;
-                        contents3 = educationContainer3;
-                    } else if(mode === "equality") {
-                        contents1 = equalityContainer1;
-                        contents2 = equalityContainer2;
-                        contents3 = equalityContainer3;
-                    } else if(mode === "poverty") {
-                        contents1 = povertyContainer1;
-                        contents2 = povertyContainer2;
-                        contents3 = povertyContainer3;
-                    } 
+        var contents1 = ""
+        var contents2 = ""
+        var contents3 = ""
+        
+        if(mode === "education") {
+            contents1 = educationContainer1;
+            contents2 = educationContainer2;
+            contents3 = educationContainer3;
+        } else if(mode === "equality") {
+            contents1 = equalityContainer1;
+            contents2 = equalityContainer2;
+            contents3 = equalityContainer3;
+        } else if(mode === "poverty") {
+            contents1 = povertyContainer1;
+            contents2 = povertyContainer2;
+            contents3 = povertyContainer3;
+        } 
 
-                    $("#container1").html(contents1)
-                    $("#container2").html(contents2) 
-                    $("#container3").html(contents3)
-                }
+        $("#container1").html(contents1)
+        $("#container2").html(contents2) 
+        $("#container3").html(contents3)
+    }
 
     var map = kartograph.map('#map');
     map.loadMap('usa.svg', function() {
@@ -121,32 +122,37 @@ $(function() {
                 //     }
                 // }
 
-                var offset = 20;
-                $('html, body').animate({
-                  scrollTop: $(".scroll-to").offset().top + offset
-                }, 1500);
+                currentState = "" 
+                
+                function talkToServer(svgState, path) {
+                    var offset = 20;
+                    $('html, body').animate({
+                      scrollTop: $(".scroll-to").offset().top + offset
+                    }, 1500);
 
-                var stateCode = svgState.key
+                    var stateCode = svgState.key
 
-                $.getJSON('/states/' + svgState.key)
-                .success(function(state) {
-                    $( ".infocontainer" ).fadeOut( "fast", function() {
-                        updateSuperInfo(state);
-                        $( ".infocontainer" ).fadeIn();
-                    });
-               
-                    console.log(state);
-                    // fade in info boxes
-                    
-                })
-                .error(function(status, error){
-                  console.log("something went wrong", status, error);
-                })
+                    $.getJSON('/states/' + svgState.key)
+                    .success(function(state) {
+                        $( ".infocontainer" ).fadeOut( "fast", function() {
+                            updateSuperInfo(state);
+                            $( ".infocontainer" ).fadeIn();
+                        });
+                   
+                        console.log(state);
+                        // fade in info boxes
+                        
+                    })
+                    .error(function(status, error){
+                      console.log("something went wrong", status, error);
+                    })
 
-                //var currentState = <% State.last.name %>
-                console.log(svgState)
-                // $("#testytest").append("<p>"<% State.find(1).name %>"</p>")
+                    console.log(svgState)
+
+                    }
+                talkToServer(svgState, path)
             },
+
             mouseleave: function(d, path) {
                 path.animate({ fill: '#ABABAB' }, 50);
             }
