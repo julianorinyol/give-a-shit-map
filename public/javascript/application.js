@@ -20,11 +20,11 @@ $(function() {
             },
             click: function(svgState, path) {
         
-                for(var i = 0; i < states.length; i++) {
-                    if(states[i].state_code === stateCode){
-                        updateSuperInfo(states[i])
-                    }
-                }
+                // for(var i = 0; i < states.length; i++) {
+                //     if(states[i].state_code === stateCode){
+                //         updateSuperInfo(states[i])
+                //     }
+                // }
 
                 var offset = 20;
                 $('html, body').animate({
