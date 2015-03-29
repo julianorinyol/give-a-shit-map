@@ -48,22 +48,42 @@ $(function() {
 
                     var educationContainer2 = "<p>"+"Math: " + state.grade_eight_math_score + "</p>" + "<p>"+"Writing: "+ state.grade_eight_writing_score + "</p>" + "<p>*Date from stardized tests of grade 8 students</p>"
                     
-                    var educationContainer3 =  "<p>"+ "Graduated high school: " + state.high_school_grad * 100 + "%</p>" + "<p>Bachelors Degree: " + state.bachelors  * 100 + "%</p>" + "<p>"+ " Advanced degree: "+ state.advanced_degree * 100 + "%</p>" + "<p>*Percentage of adult population over 25 years old</p>"
+                    var educationContainer3 =  "<p>"+ "Graduated high school: " + state.high_school_grad * 100 + "%</p>" + "<p>Bachelors Degree: " + (state.bachelors  * 100) + "%</p>" + "<p>"+ " Advanced degree: "+ state.advanced_degree * 100 + "%</p>" + "<p>*Percentage of adult population over 25 years old</p>"
 
                     $("#superinfo").html("<h1> Hello from " + state["name"] + "</h1>")
                     
 
-                    var equalityContainer1 = ""
-                    var equalityContainer2 = ""
-                    var equalityContainer3 = ""
-                    var povertyContainer1 = ""
-                    var povertyContainer2 = ""
-                    var povertyContainer3 = ""
+                    var equalityContainer1 = "<p>Women in politics: " + "5" + "%</p>"
+                    var equalityContainer2 = "<p>Women in the justice system: "+"5"+"%</p>"
+                    var equalityContainer3 = "<p>" + "For every dollar earned by men on average, women earn " + "80"+ "cents</p>"
+                    var povertyContainer1 = "<p>general poverty rate " + state.general_poverty_rate + "%</p>"
+                    var povertyContainer2 = "<p>Women_in_poverty " + state.women_in_poverty + "%</p>"
+                    var povertyContainer3 = "<p>emptyempty, what will i put here? " + "5" + "%</p>"
+
+                    var contents1 = ""
+                    var contents2 = ""
+                    var contents3 = ""
+                    
+                    if(mode === "education") {
+                        contents1 = educationContainer1;
+                        contents2 = educationContainer2;
+                        contents3 = educationContainer3;
+                    } 
+                    if(mode === "equality") {
+                        contents1 = equalityContainer1;
+                        contents2 = equalityContainer2;
+                        contents3 = equalityContainer3;
+                    } 
+                    if(mode === "poverty") {
+                        contents1 = povertyContainer1;
+                        contents2 = povertyContainer2;
+                        contents3 = povertyContainer3;
+                    } 
 
 
-                    $("#container1").html(educationContainer1)
-                    $("#container2").html(educationContainer2) 
-                    $("#container3").html(educationContainer3)
+                    $("#container1").html(contents1)
+                    $("#container2").html(contents2) 
+                    $("#container3").html(contents3)
                 }
 
                 $.getJSON('/states/' + svgState.key)
