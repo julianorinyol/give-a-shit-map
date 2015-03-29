@@ -7,7 +7,30 @@ $(function() {
     })
     console.log('state 2', states);
 
-    var mode = "equality"
+    var mode = "education"
+    
+    $("#equalityMode").click(function(){ 
+        mode = "equality"
+        console.log("inside function, ", mode)
+        updateTitles()
+        updateSuperInfo()
+    });
+    // $("#educationMode").click(function(){ 
+    //     mode = "education"
+    //     console.log("inside function, ", mode)
+    //     updateTitles()
+    //     updateSuperInfo()
+    // });
+    // $("#povertyMode").click(function(){ 
+    //     mode = "poverty"
+    //     console.log("inside function, ", mode)
+    //     updateTitles()
+    //     updateSuperInfo()
+    // });
+
+
+
+    console.log("outside function", mode)
     
     var educationTitles = ["Res11ources", "Performance","Graduation Rates"]
 
@@ -16,22 +39,26 @@ $(function() {
     var povertyTitles = ["Poverty1", "Poverty2","Poverty3"]
 
 
-    if (mode == "education"){
-        console.log("mode is education")
-        $("#box1title").html(educationTitles[0])
-        $("#box2title").html(educationTitles[1])
-        $("#box3title").html(educationTitles[2])
-    }else if(mode == "poverty"){
-        console.log("mode is poverty")
-        $("#box1title").html(povertyTitles[0])
-        $("#box2title").html(povertyTitles[1])
-        $("#box3title").html(povertyTitles[2])
-    }else if(mode == "equality"){
-        console.log("mode is equality")
-        $("#box1title").html(equalityTitles[0])
-        $("#box2title").html(equalityTitles[1])
-        $("#box3title").html(equalityTitles[2])
+    var updateTitles = function() {
+        if (mode == "education"){
+            console.log("mode is education")
+            $("#box1title").html(educationTitles[0])
+            $("#box2title").html(educationTitles[1])
+            $("#box3title").html(educationTitles[2])
+        }else if(mode == "poverty"){
+            console.log("mode is poverty")
+            $("#box1title").html(povertyTitles[0])
+            $("#box2title").html(povertyTitles[1])
+            $("#box3title").html(povertyTitles[2])
+        }else if(mode == "equality"){
+            console.log("mode is equality")
+            $("#box1title").html(equalityTitles[0])
+            $("#box2title").html(equalityTitles[1])
+            $("#box3title").html(equalityTitles[2])
+        }
     }
+
+    updateTitles()
 
     var map = kartograph.map('#map');
     map.loadMap('usa.svg', function() {
@@ -57,25 +84,18 @@ $(function() {
                   scrollTop: $(".scroll-to").offset().top + offset
                 }, 1500);
 
-
                 var stateCode = svgState.key
-
-
-
 
                 var updateSuperInfo = function(state, x, y){
                     console.log(state);
 
-
                     var educationContainer1 = '<p> Libraries per capita: ' + state.central_libraries + '</p>' + '<p>Students per teacher: ' + state.students_per_teacher + '</p>'
-
 
                     var educationContainer2 = "<p>"+"Math: " + state.grade_eight_math_score + "</p>" + "<p>"+"Writing: "+ state.grade_eight_writing_score + "</p>" + "<p>*Date from stardized tests of grade 8 students</p>"
                     
                     var educationContainer3 =  "<p>"+ "Graduated high school: " + state.high_school_grad * 100 + "%</p>" + "<p>Bachelors Degree: " + (state.bachelors  * 100) + "%</p>" + "<p>"+ " Advanced degree: "+ state.advanced_degree * 100 + "%</p>" + "<p>*Percentage of adult population over 25 years old</p>"
 
-                    $("#superinfo").html("<h1> Hello from " + state["name"] + "</h1>")
-                    
+                    $("#superinfo").html("<h1>" + state["name"] + ", Population: "+ state.population +"</h1>")                    
 
                     var equalityContainer1 = "<p>Women in politics: " + "5" + "%</p>"
                     var equalityContainer2 = "<p>Women in the justice system: "+"5"+"%</p>"
@@ -92,18 +112,15 @@ $(function() {
                         contents1 = educationContainer1;
                         contents2 = educationContainer2;
                         contents3 = educationContainer3;
-                    } 
-                    if(mode === "equality") {
+                    } else if(mode === "equality") {
                         contents1 = equalityContainer1;
                         contents2 = equalityContainer2;
                         contents3 = equalityContainer3;
-                    } 
-                    if(mode === "poverty") {
+                    } else if(mode === "poverty") {
                         contents1 = povertyContainer1;
                         contents2 = povertyContainer2;
                         contents3 = povertyContainer3;
                     } 
-
 
                     $("#container1").html(contents1)
                     $("#container2").html(contents2) 
