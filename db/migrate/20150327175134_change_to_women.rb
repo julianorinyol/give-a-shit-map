@@ -15,7 +15,7 @@ class ChangeToWomen < ActiveRecord::Migration
       t.float :senate #k
       t.float :total_seats #l
       t.float :women_in_poverty #m
-      t.float :wage_gap #n
+      t.integer :wage_gap #n
       t.float :judges #o
       t.float :general_poverty_rate #p
       t.float :high_school_grad #q

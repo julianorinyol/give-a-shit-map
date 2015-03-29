@@ -55,7 +55,7 @@ $(function() {
 
                     var equalityContainer1 = "<p>Women in politics: " + "5" + "%</p>"
                     var equalityContainer2 = "<p>Women in the justice system: "+"5"+"%</p>"
-                    var equalityContainer3 = "<p>" + "For every dollar earned by men on average, women earn " + "80"+ "cents</p>"
+                    var equalityContainer3 = "<p>" + "For every dollar earned by men on average, women earn " + state.wage_gap + " cents.</p>"
                     var povertyContainer1 = "<p>general poverty rate " + state.general_poverty_rate + "%</p>"
                     var povertyContainer2 = "<p>Women_in_poverty " + state.women_in_poverty + "%</p>"
                     var povertyContainer3 = "<p>emptyempty, what will i put here? " + "5" + "%</p>"
