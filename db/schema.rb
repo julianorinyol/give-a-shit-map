@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20150327175134) do
   create_table "states", force: true do |t|
     t.string  "name"
     t.float   "health_insurance"
-    t.float   "teen_birth"
+    t.integer "teen_birth"
     t.float   "doctor"
     t.float   "poor_health"
     t.float   "obesity"

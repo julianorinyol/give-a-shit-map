@@ -4,7 +4,7 @@ class ChangeToWomen < ActiveRecord::Migration
     create_table :states do |t|
       t.string :name #a
       t.float :health_insurance #b
-      t.float :teen_birth #c
+      t.integer :teen_birth #c
       t.float :doctor #d
       t.float :poor_health #e
       t.float :obesity #f
