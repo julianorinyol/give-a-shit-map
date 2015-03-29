@@ -1,4 +1,4 @@
-class CreateStates < ActiveRecord::Migration
+ class CreateStates < ActiveRecord::Migration
   
   def up
     create_table :states do |t|

@@ -13,13 +13,25 @@
 ActiveRecord::Schema.define(version: 20150327175134) do
 
   create_table "states", force: true do |t|
-    t.string "name"
-    t.string "health_insurance"
-    t.string "teen_birth"
-    t.string "doctor"
-    t.string "poor_health"
-    t.string "obesity"
-    t.string "state_code"
+    t.string  "name"
+    t.integer "health_insurance"
+    t.integer "teen_birth"
+    t.integer "doctor"
+    t.integer "poor_health"
+    t.integer "obesity"
+    t.string  "state_code"
+    t.integer "rape"
+    t.integer "population"
+    t.integer "house"
+    t.integer "senate"
+    t.integer "total_seats"
+    t.integer "women_in_poverty"
+    t.integer "wage_gap"
+    t.integer "judges"
+    t.integer "general_poverty_rate"
+    t.integer "high_school_grad"
+    t.integer "bachelors"
+    t.integer "advanced_degree"
   end
 
 end
