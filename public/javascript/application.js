@@ -3,57 +3,55 @@ $(function() {
     $.getJSON('/states')
     .success(function(data){
       states = data;
-      console.log('states', states);
     })
-    console.log('state 2', states);
 
     var mode = "education"
     var currentState = ""
+    var currentPath = ""
+
+    function updateWhenFilter() {
+        for(var i = 0; i < states.length; i++) {
+          if(states[i].state_code === currentState.key){
+              updateSuperInfo(states[i])
+          }
+        }
+    }
 
     $("#equalityMode").click(function(){ 
-        mode = "equality"
-        console.log("inside function, ", mode)
-        updateTitles()
-        console.log("line 18, the currentState var ==", currentState)
-        talkToServer(currentState)        
+      console.log(currentState.key)
+      mode = "equality"
+      updateTitles()
+      updateWhenFilter()
+        // talkToServer(currentState, currentPath)
     });
     $("#educationMode").click(function(){ 
-        mode = "education"
-        console.log("inside function, ", mode)
-        updateTitles()
-        talkToServer(currentState)        
+      mode = "education"
+      updateTitles()
+      updateWhenFilter()
+
     });
     $("#povertyMode").click(function(){ 
-        mode = "poverty"
-        console.log("inside function, ", mode)
-        updateTitles()
-        talkToServer(currentState)        
+      mode = "poverty"
+      updateTitles()
+      updateWhenFilter()
     });
 
-
-
-    console.log("outside function", mode)
-    
     var educationTitles = ["Resources", "Performance","Graduation Rates"]
 
     var equalityTitles = ["Politics", "Justice System","Wage Gap"]
 
     var povertyTitles = ["Poverty1", "Poverty2","Poverty3"]
 
-
     var updateTitles = function() {
         if (mode == "education"){
-            console.log("mode is education")
             $("#box1title").html(educationTitles[0])
             $("#box2title").html(educationTitles[1])
             $("#box3title").html(educationTitles[2])
         }else if(mode == "poverty"){
-            console.log("mode is poverty")
             $("#box1title").html(povertyTitles[0])
             $("#box2title").html(povertyTitles[1])
             $("#box3title").html(povertyTitles[2])
         }else if(mode == "equality"){
-            console.log("mode is equality")
             $("#box1title").html(equalityTitles[0])
             $("#box2title").html(equalityTitles[1])
             $("#box3title").html(equalityTitles[2])
@@ -62,11 +60,7 @@ $(function() {
 
     updateTitles()
 
-    
-
      var updateSuperInfo = function(state, x, y){
-
-        console.log(state);
 
         var educationContainer1 = '<p> Libraries per capita: ' + state.central_libraries + '</p>' + '<p>Students per teacher: ' + state.students_per_teacher + '</p>'
 
@@ -106,6 +100,7 @@ $(function() {
         $("#container3").html(contents3)
     }
 
+
     var map = kartograph.map('#map');
     map.loadMap('usa.svg', function() {
         console.log("start of loadmap callback")
@@ -119,42 +114,38 @@ $(function() {
                 $("#statename").html("<h3>" + state.label +  "</h3>") 
             },
             click: function(svgState, path) {
-        // the following for loop can be used, when we set up havin g the database all load at once in the beginning. we need to figure out how to use the animations with it.
-                // for(var i = 0; i < states.length; i++) {
-                //     if(states[i].state_code === stateCode){
-                //         updateSuperInfo(states[i])
-                //     }
-                // }
+              // the following for loop can be used, when we set up havin g the database all load at once in the beginning. we need to figure out how to use the animations with it.
+              // for(var i = 0; i < states.length; i++) {
+              //     if(states[i].state_code === stateCode){
+              //         updateSuperInfo(states[i])
+              //     }
+              // }
 
-                currentState = svgState.label
+              currentState = svgState
+              currentPath = path
                 
-                function talkToServer(svgState, path) {
-                    var offset = 20;
-                    $('html, body').animate({
-                      scrollTop: $(".scroll-to").offset().top + offset
-                    }, 1500);
+              var talkToServer = function(svgState, path) {
+                var offset = 20;
+                $('html, body').animate({
+                  scrollTop: $(".scroll-to").offset().top + offset
+                }, 1500);
 
-                    var stateCode = svgState.key
+                var stateCode = svgState.key
 
-                    $.getJSON('/states/' + svgState.key)
-                    .success(function(state) {
-                        $( ".infocontainer" ).fadeOut( "fast", function() {
-                            updateSuperInfo(state);
-                            $( ".infocontainer" ).fadeIn();
-                        });
-                   
-                        console.log(state);
-                        // fade in info boxes
-                        
-                    })
-                    .error(function(status, error){
-                      console.log("something went wrong", status, error);
-                    })
-
-                    console.log(svgState)
-
-                    }
-                talkToServer(svgState, path)
+                $.getJSON('/states/' + svgState.key)
+                .success(function(state) {
+                    $( ".infocontainer" ).fadeOut( "fast", function() {
+                        updateSuperInfo(state);
+                        $( ".infocontainer" ).fadeIn();
+                    });
+                    // fade in info boxes
+                    
+                })
+                .error(function(status, error){
+                  console.log("something went wrong", status, error);
+                })
+              }
+              talkToServer(svgState, path)
             },
 
             mouseleave: function(d, path) {
