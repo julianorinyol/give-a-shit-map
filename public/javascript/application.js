@@ -42,15 +42,24 @@ $(function() {
                 var updateSuperInfo = function(state, x, y){
                     console.log(state);
 
-                    var educationContainer1 = "<p> Libraries per capita" + ".12"+ "</p>" + "<p>Pupil/Teacher ratio: " + "14.3" + "</p>"
+
+                    var educationContainer1 = '<p> Libraries per capita: ' + state.central_libraries + '</p>' + '<p>Students per teacher: ' + state.students_per_teacher + '</p>'
 
 
-                    var educationContainer2 = "<p>"+"Math: " + "4"+ "</p>" + "<p>"+"Writing: "+ "5" + "</p>" + "<p>*Date from stardized tests of grade 8 students</p>"
+                    var educationContainer2 = "<p>"+"Math: " + state.grade_eight_math_score + "</p>" + "<p>"+"Writing: "+ state.grade_eight_writing_score + "</p>" + "<p>*Date from stardized tests of grade 8 students</p>"
                     
-                    var educationContainer3 =  "<p>"+ "Graduated high school: 17%" + "</p>" + "<p>Bachelors Degree: 25% </p>" + "<p>"+ " Advanced degree: 17%</p>" + "<p>*Percentage of adult population over 25 years old</p>"
+                    var educationContainer3 =  "<p>"+ "Graduated high school: " + state.high_school_grad * 100 + "%</p>" + "<p>Bachelors Degree: " + state.bachelors  * 100 + "%</p>" + "<p>"+ " Advanced degree: "+ state.advanced_degree * 100 + "%</p>" + "<p>*Percentage of adult population over 25 years old</p>"
 
                     $("#superinfo").html("<h1> Hello from " + state["name"] + "</h1>")
                     
+                    var equalityContainer1 = ""
+                    var equalityContainer2 = ""
+                    var equalityContainer3 = ""
+                    var povertyContainer1 = ""
+                    var povertyContainer2 = ""
+                    var povertyContainer3 = ""
+
+
 
                     $("#container1").html(educationContainer1)
                     $("#container2").html(educationContainer2) 
