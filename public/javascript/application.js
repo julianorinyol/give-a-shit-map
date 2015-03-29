@@ -13,20 +13,21 @@ $(function() {
         mode = "equality"
         console.log("inside function, ", mode)
         updateTitles()
+        console.log("line 16")
         updateSuperInfo()
     });
-    // $("#educationMode").click(function(){ 
-    //     mode = "education"
-    //     console.log("inside function, ", mode)
-    //     updateTitles()
-    //     updateSuperInfo()
-    // });
-    // $("#povertyMode").click(function(){ 
-    //     mode = "poverty"
-    //     console.log("inside function, ", mode)
-    //     updateTitles()
-    //     updateSuperInfo()
-    // });
+    $("#educationMode").click(function(){ 
+        mode = "education"
+        console.log("inside function, ", mode)
+        updateTitles()
+        updateSuperInfo()
+    });
+    $("#povertyMode").click(function(){ 
+        mode = "poverty"
+        console.log("inside function, ", mode)
+        updateTitles()
+        updateSuperInfo()
+    });
 
 
 
@@ -60,33 +61,7 @@ $(function() {
 
     updateTitles()
 
-    var map = kartograph.map('#map');
-    map.loadMap('usa.svg', function() {
-        console.log("start of loadmap callback")
-        map.addLayer('layer0', {
-            styles: {
-                stroke: '#E4E4E4',
-                fill: '#ABABAB'
-            },
-            mouseenter: function(data, path) {
-                path.attr('fill', Math.random() < 0.5 ? '#F79244' : '#EA8B42');
-            },
-            click: function(svgState, path) {
-        
-                // for(var i = 0; i < states.length; i++) {
-                //     if(states[i].state_code === stateCode){
-                //         updateSuperInfo(states[i])
-                //     }
-                // }
-
-                var offset = 20;
-                $('html, body').animate({
-                  scrollTop: $(".scroll-to").offset().top + offset
-                }, 1500);
-
-                var stateCode = svgState.key
-
-                var updateSuperInfo = function(state, x, y){
+     var updateSuperInfo = function(state, x, y){
                     console.log(state);
 
                     var educationContainer1 = '<p> Libraries per capita: ' + state.central_libraries + '</p>' + '<p>Students per teacher: ' + state.students_per_teacher + '</p>'
@@ -127,6 +102,32 @@ $(function() {
                     $("#container3").html(contents3)
                 }
 
+    var map = kartograph.map('#map');
+    map.loadMap('usa.svg', function() {
+        console.log("start of loadmap callback")
+        map.addLayer('layer0', {
+            styles: {
+                stroke: '#E4E4E4',
+                fill: '#ABABAB'
+            },
+            mouseenter: function(data, path) {
+                path.attr('fill', Math.random() < 0.5 ? '#F79244' : '#EA8B42');
+            },
+            click: function(svgState, path) {
+        // the following for loop can be used, when we set up havin g the database all load at once in the beginning. we need to figure out how to use the animations with it.
+                // for(var i = 0; i < states.length; i++) {
+                //     if(states[i].state_code === stateCode){
+                //         updateSuperInfo(states[i])
+                //     }
+                // }
+
+                var offset = 20;
+                $('html, body').animate({
+                  scrollTop: $(".scroll-to").offset().top + offset
+                }, 1500);
+
+                var stateCode = svgState.key
+
                 $.getJSON('/states/' + svgState.key)
                 .success(function(state) {
                     $( ".infocontainer" ).fadeOut( "fast", function() {
@@ -136,7 +137,6 @@ $(function() {
                
                     console.log(state);
                     // fade in info boxes
-
                     
                 })
                 .error(function(status, error){
@@ -153,23 +153,23 @@ $(function() {
         
         });
 
-        var points_of_interest = [
-            // { name: 'Juneau, AK', lat: 58.3, lon: -134.416667 },
-            // { name: 'Honolulu, HI', lat: 21.3, lon: -157.816667 },
-            // { name: 'San Francisco, CA', lat: 37.783333, lon: -122.416667 },
-        ];
+        // var points_of_interest = [
+        //     { name: 'Juneau, AK', lat: 58.3, lon: -134.416667 },
+        //     { name: 'Honolulu, HI', lat: 21.3, lon: -157.816667 },
+        //     { name: 'San Francisco, CA', lat: 37.783333, lon: -122.416667 },
+        // ];
 
-        map.addSymbols({
-            type: kartograph.LabeledBubble,
-            data: points_of_interest,
-            location: function(d) { return [d.lon, d.lat] },
-            title: function(d) { return d.name; },
-            radius: 3,
-            center: false,
-            attrs: { fill: 'black' },
-            labelattrs: { 'font-size': 11 },
-            buffer: true
-        });
+        // map.addSymbols({
+        //     type: kartograph.LabeledBubble,
+        //     data: points_of_interest,
+        //     location: function(d) { return [d.lon, d.lat] },
+        //     title: function(d) { return d.name; },
+        //     radius: 3,
+        //     center: false,
+        //     attrs: { fill: 'black' },
+        //     labelattrs: { 'font-size': 11 },
+        //     buffer: true
+        // });
 
     }, { padding: 30 });
 });
