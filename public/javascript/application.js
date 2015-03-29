@@ -8,25 +8,26 @@ $(function() {
     console.log('state 2', states);
 
     var mode = "education"
-    
+    var currentState = ""
+
     $("#equalityMode").click(function(){ 
         mode = "equality"
         console.log("inside function, ", mode)
         updateTitles()
-        console.log("line 16")
-        updateSuperInfo()
+        console.log("line 18, the currentState var ==", currentState)
+        talkToServer(currentState)        
     });
     $("#educationMode").click(function(){ 
         mode = "education"
         console.log("inside function, ", mode)
         updateTitles()
-        updateSuperInfo()
+        talkToServer(currentState)        
     });
     $("#povertyMode").click(function(){ 
         mode = "poverty"
         console.log("inside function, ", mode)
         updateTitles()
-        updateSuperInfo()
+        talkToServer(currentState)        
     });
 
 
@@ -35,7 +36,7 @@ $(function() {
     
     var educationTitles = ["Resources", "Performance","Graduation Rates"]
 
-    var equalityTitles = ["Equality1", "Equality2","Equality3"]
+    var equalityTitles = ["Politics", "Justice System","Wage Gap"]
 
     var povertyTitles = ["Poverty1", "Poverty2","Poverty3"]
 
@@ -64,6 +65,7 @@ $(function() {
     
 
      var updateSuperInfo = function(state, x, y){
+
                     console.log(state);
 
                     var educationContainer1 = '<p> People per library: ' + parseInt(state.population/(state.branch_libraries + state.central_libraries)) + '</p>' + '<p>Students per teacher: ' + state.students_per_teacher + '</p>'
@@ -113,7 +115,6 @@ $(function() {
                 fill: '#ABABAB'
             },
             mouseenter: function(state, path) {
-                console.log(state.label);
                 path.attr('fill', Math.random() < 0.5 ? '#F79244' : '#EA8B42');
                 $("#statename").html("<h3 style='color:#F79244'>" + state.label +  "</h3>"); 
             },
@@ -125,32 +126,37 @@ $(function() {
                 //     }
                 // }
 
-                var offset = 20;
-                $('html, body').animate({
-                  scrollTop: $(".scroll-to").offset().top + offset
-                }, 1500);
+                currentState = svgState.label
+                
+                function talkToServer(svgState, path) {
+                    var offset = 20;
+                    $('html, body').animate({
+                      scrollTop: $(".scroll-to").offset().top + offset
+                    }, 1500);
 
-                var stateCode = svgState.key
+                    var stateCode = svgState.key
 
-                $.getJSON('/states/' + svgState.key)
-                .success(function(state) {
-                    $( ".infocontainer" ).fadeOut( "fast", function() {
-                        updateSuperInfo(state);
-                        $( ".infocontainer" ).fadeIn();
-                    });
-               
-                    console.log(state);
-                    // fade in info boxes
-                    
-                })
-                .error(function(status, error){
-                  console.log("something went wrong", status, error);
-                })
+                    $.getJSON('/states/' + svgState.key)
+                    .success(function(state) {
+                        $( ".infocontainer" ).fadeOut( "fast", function() {
+                            updateSuperInfo(state);
+                            $( ".infocontainer" ).fadeIn();
+                        });
+                   
+                        console.log(state);
+                        // fade in info boxes
+                        
+                    })
+                    .error(function(status, error){
+                      console.log("something went wrong", status, error);
+                    })
 
-                //var currentState = <% State.last.name %>
-                console.log(svgState)
-                // $("#testytest").append("<p>"<% State.find(1).name %>"</p>")
+                    console.log(svgState)
+
+                    }
+                talkToServer(svgState, path)
             },
+
             mouseleave: function(d, path) {
                 path.animate({ fill: '#ABABAB' }, 50);
             }
