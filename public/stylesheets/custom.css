@@ -36,3 +36,12 @@ p {
 .scroll-to {
   height: 400px;
 }
+
+p.nav-text {
+  margin-top: 25px;
+  margin-left: 60px;
+}
+
+
+
+
