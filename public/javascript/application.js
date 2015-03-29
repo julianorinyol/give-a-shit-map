@@ -45,7 +45,7 @@ $(function() {
                     var educationContainer1 = "<p> Libraries per capita" + ".12"+ "</p>" + "<p>Pupil/Teacher ratio: " + "14.3" + "</p>"
 
 
-                    var educationContainer2 = "<p>"+" data here"+ "</p>"
+                    var educationContainer2 = "<p>"+"Math: " + "4"+ "</p>" + "<p>"+"Writing: "+ "5" + "</p>" + "<p>*Date from stardized tests of grade 8 students</p>"
                     
                     var educationContainer3 =  "<p>"+ "Graduated high school: 17%" + "</p>" + "<p>Bachelors Degree: 25% </p>" + "<p>"+ " Advanced degree: 17%</p>" + "<p>*Percentage of adult population over 25 years old</p>"
 
