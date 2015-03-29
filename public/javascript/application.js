@@ -41,8 +41,10 @@ $(function() {
                 stroke: '#E4E4E4',
                 fill: '#ABABAB'
             },
-            mouseenter: function(data, path) {
+            mouseenter: function(state, path) {
+                console.log(state.label);
                 path.attr('fill', Math.random() < 0.5 ? '#F79244' : '#EA8B42');
+                $("#statename").html("<h3>" + state.label +  "</h3>") 
             },
             click: function(svgState, path) {
         
@@ -67,7 +69,7 @@ $(function() {
                     console.log(state);
 
 
-                    var educationContainer1 = '<p> Libraries per capita: ' + state.central_libraries + '</p>' + '<p>Students per teacher: ' + state.students_per_teacher + '</p>'
+                    var educationContainer1 = '<p> People per library: ' + state.population/(state.branch_libraries + state.central_libraries) + '</p>' + '<p>Students per teacher: ' + state.students_per_teacher + '</p>'
 
 
                     var educationContainer2 = "<p>"+"Math: " + state.grade_eight_math_score + "</p>" + "<p>"+"Writing: "+ state.grade_eight_writing_score + "</p>" + "<p>*Date from stardized tests of grade 8 students</p>"
