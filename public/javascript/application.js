@@ -40,7 +40,7 @@ $(function() {
 
     var equalityTitles = ["Politics", "Justice System","Wage Gap"]
 
-    var povertyTitles = ["Poverty1", "Poverty2","Poverty3"]
+    var povertyTitles = ["General Poverty Rate", "Women in Poverty","Health Insurance"]
 
     var updateTitles = function() {
         if (mode == "education"){
