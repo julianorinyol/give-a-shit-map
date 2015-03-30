@@ -75,8 +75,8 @@ $(function() {
       var equalityContainer3 = "<p>" + "For every dollar earned by men on average, women earn " + parseInt(state.wage_gap) + " cents.</p>"
 
       var povertyContainer1 = "<p>Overall poverty rate: " + state.general_poverty_rate*100 + "%</p>"
-      var povertyContainer2 = "<p>Women in poverty: " + state.women_in_poverty + "%</p>"
-      var povertyContainer3 = "<p>Children in poverty: " + "5" + "%</p>"
+      var povertyContainer2 = "<p>Women living in poverty: " + state.women_in_poverty + "%</p>" + "<p style='font-size: 12px'> *National poverty rates calculated by NWLC based on 2014 Current Population Survey, Annual Social and Economic Supplement </p>"
+      var povertyContainer3 = "<p>Number of women 19-64 without health Insurance: " + state.health_insurance * 100 + "%</p>"
 
       var contents1 = ""
       var contents2 = ""
