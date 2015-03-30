@@ -38,8 +38,9 @@ p {
 }
 
 p.nav-text {
-  margin-top: 25px;
-  margin-left: 60px;
+  margin-top: 27px;
+  margin-left: 160px;
+  margin-right: -40px;
 }
 
 .eduicon {
@@ -48,6 +49,8 @@ p.nav-text {
 
 }
 
-
+.click {
+  font-size: 30pt;
+}
 
 
