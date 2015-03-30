@@ -64,19 +64,19 @@ $(function() {
 
       console.log(state);
 
+      $("#superinfo").html("<h1>" + state["name"] + "</h1>" + "<h3>Population: "+ state.population +"</h3>")   
+
       var educationContainer1 = '<p> People per library: ' + parseInt(state.population/(state.branch_libraries + state.central_libraries)) + '</p>' + '<p>Students per teacher: ' + state.students_per_teacher + '</p>'
-      var educationContainer2 = "<p>"+"Math: " + state.grade_eight_math_score + "</p>" + "<p>"+"Writing: "+ state.grade_eight_writing_score + "</p>" + "<p>* <em>Date from standardized tests of eighth grade students</em></p>"
-      var educationContainer3 =  "<p>"+ "High school diploma: " + state.high_school_grad * 100 + "%</p>" + "<p>Bachelors degree: " + (state.bachelors  * 100) + "%</p>" + "<p>"+ " Advanced degree: "+ state.advanced_degree * 100 + "%</p>" + "<p>* <em>Percentage of adult population over 25 years old</em></p>"
+      var educationContainer2 = "<p>"+"Math: " + state.grade_eight_math_score + "</p>" + "<p>"+"Writing: "+ state.grade_eight_writing_score + "</p>" + "<p style='font-size: 12px'>* <em>Date from standardized tests of eighth grade students</em></p>"
+      var educationContainer3 =  "<p>"+ "High school diploma: " + state.high_school_grad * 100 + "%</p>" + "<p>Bachelors degree: " + (state.bachelors  * 100) + "%</p>" + "<p>"+ " Advanced degree: "+ state.advanced_degree * 100 + "%</p>" + "<p style='font-size: 12px'>* <em>Percentage of adult population over 25 years old</em></p>"
 
-      $("#superinfo").html("<h1>" + state["name"] + ", Population: "+ state.population +"</h1>")                    
-
-      var equalityContainer1 = "<p>Women in legislature: " + parseInt(state.total_seats/(state.house+state.senate)) + "%</p>" + "<p>* <em>Percentage of members in state legislature who are women"
+      var equalityContainer1 = "<p>Percentage of members in state legislature who are women: " + parseInt(state.total_seats/(state.house+state.senate)) + "%</p>"
       var equalityContainer2 = "<p>Percentage of judges who are women: "+ state.judges + "%</p>"
       var equalityContainer3 = "<p>" + "For every dollar earned by men on average, women earn " + parseInt(state.wage_gap) + " cents.</p>"
 
       var povertyContainer1 = "<p>Overall poverty rate: " + state.general_poverty_rate*100 + "%</p>"
-      var povertyContainer2 = "<p>Women living in poverty: " + state.women_in_poverty + "%</p>" + "<p style='font-size: 12px'> *National poverty rates calculated by NWLC based on 2014 Current Population Survey, Annual Social and Economic Supplement </p>"
-      var povertyContainer3 = "<p>Number of women 19-64 without health Insurance: " + state.health_insurance * 100 + "%</p>"
+      var povertyContainer2 = "<p>Women living in poverty: " + state.women_in_poverty + "%</p>" + "<p style='font-size: 12px'>* <em>National poverty rates calculated by NWLC based on 2014 Current Population Survey, Annual Social and Economic Supplement</em></p>"
+      var povertyContainer3 = "<p>Percentage of women between the ages of 19 and 64 without health Insurance: " + state.health_insurance * 100 + "%</p>"
 
       var contents1 = ""
       var contents2 = ""
