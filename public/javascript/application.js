@@ -17,6 +17,10 @@ $(function() {
         }
     }
 
+    $(".btn").click(function(){
+    $(this).addClass("active").siblings().removeClass("active");
+    });
+
     $("#equalityMode").click(function(){ 
       console.log(currentState.key)
       mode = "equality"
@@ -173,3 +177,5 @@ $(function() {
 
     }, { padding: 30 });
 });
+
+
