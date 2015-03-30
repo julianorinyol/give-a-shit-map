@@ -70,8 +70,8 @@ $(function() {
 
       $("#superinfo").html("<h1>" + state["name"] + ", Population: "+ state.population +"</h1>")                    
 
-      var equalityContainer1 = "<p>Women in legislature: " + parseInt(state.total_seats/(state.house+state.senate)) + "%</p>"
-      var equalityContainer2 = "<p>Percentage of female judges: "+ state.judges + "%</p>"
+      var equalityContainer1 = "<p>Women in legislature: " + parseInt(state.total_seats/(state.house+state.senate)) + "%</p>" + "<p>* <em>Percentage of members in state legislature who are women"
+      var equalityContainer2 = "<p>Percentage of judges who are women: "+ state.judges + "%</p>"
       var equalityContainer3 = "<p>" + "For every dollar earned by men on average, women earn " + parseInt(state.wage_gap) + " cents.</p>"
 
       var povertyContainer1 = "<p>Overall poverty rate: " + state.general_poverty_rate*100 + "%</p>"
