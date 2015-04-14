@@ -1,16 +1,8 @@
-@font-face {
- font-family: 'Muffler';
- src: url('fonts/Muffler-webfont.eot');
- src: url('fonts/Muffler-webfont.eot?#iefix') format('embedded-opentype'),
- url('fonts/Muffler-webfont.woff') format('woff'),
- url('fonts/Muffler-webfont.ttf') format('truetype'),
- url('fonts/Muffler-webfont.svg#FontName') format('svg');
- font-weight: normal;
- font-style: normal;
-}
+
+
+
 
 h1 {
-  font-family: bebas neue;
   font-size: 30pt;
   color: #959595;
   margin-top: 0px;
